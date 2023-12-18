@@ -1,12 +1,14 @@
 import axios from "axios";
 
-const API_URL = 'http://localhost:8080/contacts';
+const API_URL = process.env.REACT_APP_API_BASE_URL_BACKEND;
 
 export async function saveContact(contact) {
     return await axios.post(API_URL, contact);
 }
 
 export async function getContacts(page = 0, size = 12) {
+    console.log("🚀 ~ file: ContactService.js:10 ~ getContacts ~ function:", API_URL)
+    
     return await axios.get(`${API_URL}?page=${page}&size=${size}`);
 }
 
